@@ -20,9 +20,9 @@ const style = StyleSheet.create({
   separator: {
     height: 1,
     width: '100%',
-    backgroundColor: '#000',
+    backgroundColor: '#3b3b3b',
     borderBottomColor: '#000',
-    borderBottomWidth: 1,
+    borderBottomWidth: 4,
     borderRadius: 12,
   },
   headerText: {
