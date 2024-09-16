@@ -1,5 +1,6 @@
 import {SafeAreaView, Text, TextInput} from 'react-native';
 import styles from './styles.ts';
+import React from 'react';
 
 interface Props {
   value: string;

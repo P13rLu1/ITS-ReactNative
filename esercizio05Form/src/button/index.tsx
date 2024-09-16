@@ -1,5 +1,6 @@
 import {Text, TouchableOpacity, View} from 'react-native';
 import styles from './styles.ts';
+import React from 'react';
 
 interface Props {
   onPress: () => void;
@@ -14,7 +15,7 @@ function Button({onPress, title, type = 'primary'}: Props) {
         <View
           style={[
             styles.container,
-            type == 'danger' ? styles.danger : styles.primary,
+            type === 'danger' ? styles.danger : styles.primary,
           ]}>
           <Text style={styles.text}>{title}</Text>
         </View>

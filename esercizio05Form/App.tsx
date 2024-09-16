@@ -16,6 +16,7 @@ function App(): React.JSX.Element {
 
   return (
     <>
+      {/* eslint-disable-next-line react-native/no-inline-styles */}
       <SafeAreaView style={{padding: 20}}>
         <Input value={text} onChangeText={setText} error={error} />
         <Input
