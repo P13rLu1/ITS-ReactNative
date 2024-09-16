@@ -20,7 +20,7 @@ const style = StyleSheet.create({
   separator: {
     height: 1,
     width: '100%',
-    backgroundColor: '#3b3b3b',
+    backgroundColor: '#000',
     borderBottomColor: '#000',
     borderBottomWidth: 4,
     borderRadius: 12,
@@ -41,6 +41,10 @@ const style = StyleSheet.create({
     marginBottom: 20,
     color: '#ff6347',
     textAlign: 'center',
+  },
+  flatList: {
+    flex: 1,
+    backgroundColor: '#f0f8ff',
   },
 });
 
