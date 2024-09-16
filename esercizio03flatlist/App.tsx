@@ -5,7 +5,6 @@ import Separator from './src/components/Separator.tsx';
 import Header from './src/components/Header.tsx';
 import Footer from './src/components/Footer.tsx';
 
-
 const App = () => {
   const array = [
     'Sara',
