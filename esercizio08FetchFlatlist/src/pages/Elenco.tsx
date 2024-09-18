@@ -1,4 +1,4 @@
-import {FlatList} from 'react-native';
+import {FlatList, Vibration} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Result, Utente} from '../types/utente.ts';
 import CardUtente from '../components/card-utente';
@@ -21,9 +21,12 @@ export default function Elenco({navigation}: Props) {
   }, []);
 
   const renderItem = ({item}: {item: Utente}) => {
-    return <CardUtente utente={item} onUtentePress={() => navigation.navigate("Dettaglio", {
-      utente: item,
-    })} />;
+    return <CardUtente utente={item} onUtentePress={() => {
+      navigation.navigate("Dettaglio", {
+        utente: item,
+      });
+      Vibration.vibrate(25);
+    }} />;
   };
 
   return (

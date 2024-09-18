@@ -1,14 +1,15 @@
 import {Image, Text, View} from 'react-native';
 import React from 'react';
-import {CardDettaglioStyle} from '../../assets/dettaglioStyle.ts'; // Modificato per importare lo stile dello sfondo
+import {CardDettaglioStyle} from '../../assets/dettaglioStyle.ts';
 import {Utente} from '../../types/utente.ts';
+import {OpenURLButton} from '../card-url-redirect';
 
 interface CardDettaglioProps {
   utente: Utente;
 }
 
 export default function CardDettaglio({utente}: CardDettaglioProps) {
-  const {email, dob, gender, cell, login, picture, name} = utente;
+  const {email, dob, gender, cell, login, picture, name, location} = utente;
 
   return (
     <View style={CardDettaglioStyle.screenContainer}>
@@ -42,6 +43,10 @@ export default function CardDettaglio({utente}: CardDettaglioProps) {
           <Text style={CardDettaglioStyle.infoText}>{login.password}</Text>
         </Text>
       </View>
+      <OpenURLButton
+        url={`https://www.google.com/maps/place/${location.coordinates.latitude},${location.coordinates.longitude}`}
+        children={'Premi Per Aprire Le Mappe'}
+      />
     </View>
   );
 }
