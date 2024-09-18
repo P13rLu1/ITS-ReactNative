@@ -1,7 +1,15 @@
-import {Image, SafeAreaView, Text, TouchableOpacity, Vibration, View} from 'react-native';
+import {
+  Image,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  Vibration,
+  View,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Animale} from '../types/animali.ts';
 import AnimaliStyle from '../components/AnimaliStyle.ts';
+import {animaliFetch} from '../utils/fetchAnimali.ts';
 
 function Gatti() {
   const url =
@@ -9,16 +17,10 @@ function Gatti() {
   const [gatto, setGatti] = useState<Animale>();
 
   function getGatti() {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setGatti(data[0]);
-      });
+    animaliFetch(url).then(setGatti);
   }
 
-  useEffect(() => {
-    getGatti();
-  }, []);
+  useEffect(getGatti, []);
 
   return (
     <>
@@ -30,10 +32,12 @@ function Gatti() {
               style={AnimaliStyle.image}
               resizeMode={'contain'}
             />
-            <TouchableOpacity onPress={() => {
-              getGatti();
-              Vibration.vibrate(100);
-            }} style={AnimaliStyle.button}>
+            <TouchableOpacity
+              onPress={() => {
+                getGatti();
+                Vibration.vibrate(100);
+              }}
+              style={AnimaliStyle.button}>
               <Text style={AnimaliStyle.buttonText}>Prendi Un Altro Gatto</Text>
             </TouchableOpacity>
           </View>

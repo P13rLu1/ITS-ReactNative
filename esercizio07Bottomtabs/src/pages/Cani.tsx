@@ -2,6 +2,7 @@ import {Image, SafeAreaView, Text, TouchableOpacity, Vibration, View} from 'reac
 import React, {useEffect, useState} from 'react';
 import {Animale} from '../types/animali.ts';
 import AnimaliStyle from '../components/AnimaliStyle.ts';
+import {animaliFetch} from '../utils/fetchAnimali.ts';
 
 function Gatti() {
   const url =
@@ -9,16 +10,10 @@ function Gatti() {
   const [cane, setCane] = useState<Animale>();
 
   function getCane() {
-    fetch(url)
-      .then(res => res.json())
-      .then(data => {
-        setCane(data[0]);
-      });
+    animaliFetch(url).then(setCane);
   }
 
-  useEffect(() => {
-    getCane();
-  }, []);
+  useEffect(getCane, []);
 
   return (
     <>
