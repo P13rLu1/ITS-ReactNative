@@ -1,16 +1,21 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator, NativeStackNavigationOptions} from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationOptions,
+} from '@react-navigation/native-stack';
 import Elenco from './src/pages/Elenco.tsx';
 import Dettaglio from './src/pages/Dettaglio.tsx';
+import {Utente} from './src/types/utente.ts';
 
-type StackParamList = {
+export type StackParamList = {
   Elenco: undefined;
-  Dettaglio: undefined; //todo
+  Dettaglio: {
+    utente: Utente;
+  };
 };
 
 const configOptions: NativeStackNavigationOptions = {
-  headerTitle: 'Elenco Degli User 👤',
   headerTitleAlign: 'center',
   headerTintColor: 'white',
   headerStyle: {backgroundColor: 'black'},
@@ -21,13 +26,19 @@ function App(): React.JSX.Element {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        initialRouteName={'Elenco'}
+        screenOptions={{animation: 'slide_from_bottom'}}>
         <Stack.Screen
           name="Elenco"
           component={Elenco}
-          options={configOptions}
+          options={{...configOptions, headerTitle: 'Elenco Degli User 👤'}}
         />
-        <Stack.Screen name="Dettaglio" component={Dettaglio} />
+        <Stack.Screen
+          name="Dettaglio"
+          component={Dettaglio}
+          options={{...configOptions, headerTitle: 'Dettaglio Utente 🧐'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,9 +1,13 @@
-import {FlatList, Image, Text, View} from 'react-native';
+import {FlatList} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {Result, Utente} from '../types/utente.ts';
-import {elencoStyle} from '../assets/elencoStyle.ts';
+import CardUtente from '../components/card-utente';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {StackParamList} from '../../App.tsx';
 
-export default function Elenco() {
+type Props = NativeStackScreenProps<StackParamList, 'Elenco'>;
+
+export default function Elenco({navigation}: Props) {
   const url = 'https://randomuser.me/api/?results=50';
 
   const [utenti, setUtenti] = useState<Utente[]>([]);
@@ -17,19 +21,9 @@ export default function Elenco() {
   }, []);
 
   const renderItem = ({item}: {item: Utente}) => {
-    return(
-      <>
-        <View style={elencoStyle.background}>
-          <View style={elencoStyle.container}>
-            <Image
-              source={{uri: item.picture.large}}
-              style={elencoStyle.image}
-            />
-            <Text style={elencoStyle.text}>{item.name.first} {item.name.last}</Text>
-          </View>
-        </View>
-      </>
-    ) ;
+    return <CardUtente utente={item} onUtentePress={() => navigation.navigate("Dettaglio", {
+      utente: item,
+    })} />;
   };
 
   return (
@@ -37,6 +31,7 @@ export default function Elenco() {
       data={utenti}
       renderItem={renderItem}
       keyExtractor={item => item.login.uuid}
+
     />
   );
 }

@@ -1,10 +1,10 @@
-import {Text, View} from 'react-native';
 import React from 'react';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {StackParamList} from '../../App.tsx';
+import CardDettaglio from '../components/card-dettaglio';
 
-export default function Dettaglio() {
-  return (
-    <View>
-      <Text>Dettaglio</Text>
-    </View>
-  );
+type Props = NativeStackScreenProps<StackParamList, 'Dettaglio'>;
+
+export default function Dettaglio({route}: Props) {
+  return <CardDettaglio utente={route.params.utente} />;
 }
