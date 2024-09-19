@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
+import {Text, View, TouchableOpacity, Vibration} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 import { TabsParamList } from '../../App'; // Assicurati che il percorso sia corretto
@@ -22,7 +22,10 @@ export const Homepage = () => {
       <Text style={styles.title}>Pokédex</Text>
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('Pokemon')}
+        onPress={() => {
+          navigation.navigate('Pokemon');
+          Vibration.vibrate(24);
+        }}
       >
         <Text style={styles.buttonText}>Vai alla Lista dei Pokémon</Text>
       </TouchableOpacity>
