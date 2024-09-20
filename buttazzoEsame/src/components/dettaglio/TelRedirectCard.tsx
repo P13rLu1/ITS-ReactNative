@@ -5,7 +5,7 @@ import {
   Alert,
   Linking,
 } from 'react-native';
-import {dettaglioStyles} from '../../assets/dettaglio/dettaglioStyles.ts'; // Importa gli stili
+import {dettaglioStyles} from '../../assets/dettaglio/dettaglioStyles.ts';
 
 interface TelRedirectCardProps {
   tel: string;

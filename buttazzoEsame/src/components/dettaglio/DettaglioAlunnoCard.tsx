@@ -2,7 +2,7 @@ import {Image, ScrollView, Text, TouchableOpacity, Vibration, View} from 'react-
 import {Alunno} from '../../types/alunno.ts';
 import {MailToRedirectCard} from './MailToRedirectCard.tsx';
 import {TelRedirectCard} from './TelRedirectCard.tsx';
-import {dettaglioStyles} from '../../assets/dettaglio/dettaglioStyles.ts'; // Importa gli stili
+import {dettaglioStyles} from '../../assets/dettaglio/dettaglioStyles.ts';
 
 interface Props {
   alunno: Alunno;

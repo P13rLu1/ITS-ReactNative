@@ -4,7 +4,7 @@ import {StackParamList} from './Alunni.tsx';
 import {useEffect, useState} from 'react';
 import {Alunno} from '../types/alunno.ts';
 import {ListaAlunnoCard} from '../components/elenco/ListaAlunnoCard.tsx';
-import {styles} from '../assets/elenco/elencoStyle.ts'; // Importa gli stili
+import {styles} from '../assets/elenco/elencoStyle.ts';
 
 type Props = NativeStackScreenProps<StackParamList, 'Elenco'>;
 
